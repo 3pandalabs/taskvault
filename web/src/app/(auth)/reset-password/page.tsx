@@ -48,7 +48,7 @@ export default function ResetPasswordPage() {
       <div className="space-y-4 text-center">
         <h1 className="text-xl font-semibold">Link incomplete</h1>
         <p className="text-sm text-fg-muted">This reset link is missing its token. Request a fresh one.</p>
-        <Link href="/forgot-password" className="inline-flex min-h-11 items-center text-sm text-accent hover:underline">
+        <Link href="/forgot-password" className="inline-flex min-h-11 items-center text-sm text-amber-300 hover:underline">
           Request a new link
         </Link>
       </div>
@@ -61,7 +61,7 @@ export default function ResetPasswordPage() {
         <CheckCircle2 className="mx-auto size-10 text-accent" aria-hidden />
         <h1 className="text-xl font-semibold">Password updated</h1>
         <p className="text-sm text-fg-muted">Sign in with your new password.</p>
-        <Link href="/login" className="inline-flex min-h-11 items-center text-sm text-accent hover:underline">
+        <Link href="/login" className="inline-flex min-h-11 items-center text-sm text-amber-300 hover:underline">
           Go to sign in
         </Link>
       </div>

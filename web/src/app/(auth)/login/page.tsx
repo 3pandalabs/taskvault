@@ -61,7 +61,7 @@ export default function LoginPage() {
         Sign in
       </Button>
       <p className="text-center text-sm">
-        <Link href="/forgot-password" className="inline-flex min-h-11 items-center text-accent hover:underline">
+        <Link href="/forgot-password" className="inline-flex min-h-11 items-center text-amber-300 hover:underline">
           Forgot password?
         </Link>
       </p>

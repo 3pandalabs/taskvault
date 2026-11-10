@@ -90,7 +90,7 @@ function ProfileForm() {
               timezone !== device ? (
                 <>
                   This device is in {device}.{" "}
-                  <button type="button" className="text-accent hover:underline" onClick={() => setTimezone(device)}>
+                  <button type="button" className="text-amber-300 hover:underline" onClick={() => setTimezone(device)}>
                     Use that
                   </button>
                 </>
@@ -153,10 +153,10 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className="flex h-11 shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
     >
-      <span className={cn("flex h-7 w-12 items-center rounded-full p-0.5 transition-colors", checked ? "bg-accent" : "bg-fg-muted/30")}>
+      <span className={cn("flex h-7 w-12 items-center rounded-full p-0.5 transition-colors", checked ? "bg-amber-400" : "bg-white/15")}>
         <span
           className={cn(
-            "size-6 rounded-full bg-white shadow transition-transform",
+            "size-6 rounded-full bg-zinc-100 shadow shadow-black/40 transition-transform",
             checked ? "translate-x-5" : "translate-x-0",
           )}
         />

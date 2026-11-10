@@ -28,7 +28,7 @@ export default function ForgotPasswordPage() {
           If <strong className="text-fg">{email.trim()}</strong> has an account, a reset link is on its way. It works for
           one hour.
         </p>
-        <Link href="/login" className="inline-flex min-h-11 items-center text-sm text-accent hover:underline">
+        <Link href="/login" className="inline-flex min-h-11 items-center text-sm text-amber-300 hover:underline">
           Back to sign in
         </Link>
       </div>
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
         Send reset link
       </Button>
       <p className="text-center text-sm">
-        <Link href="/login" className="inline-flex min-h-11 items-center text-accent hover:underline">
+        <Link href="/login" className="inline-flex min-h-11 items-center text-amber-300 hover:underline">
           Back to sign in
         </Link>
       </p>

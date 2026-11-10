@@ -1,9 +1,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// text-base on phones: iOS zooms into any focused field under 16px.
+// AdVault field style (ui/input.tsx there). text-base on phones: iOS zooms
+// into any focused field under 16px; AdVault is desktop-first and uses text-sm.
 export const fieldClass =
-  "w-full rounded-xl border border-line bg-surface px-3 text-base text-fg placeholder:text-fg-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
+  "w-full rounded-lg border border-white/15 bg-white/5 px-3 text-base text-zinc-100 placeholder:text-zinc-500 focus:border-amber-400/60 focus:outline-none focus:ring-1 focus:ring-amber-400/60 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
 
 export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
   ({ className, type, ...props }, ref) => (

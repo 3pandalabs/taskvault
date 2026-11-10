@@ -625,7 +625,7 @@ function NotesSection({
         }}
         rows={6}
         placeholder="Case numbers, who you spoke to, what they said… Saves when you tap away."
-        className="min-h-[140px] rounded-2xl"
+        className="min-h-[140px]"
       />
     </section>
   );
