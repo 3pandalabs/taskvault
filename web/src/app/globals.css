@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Tokens follow 3pandalabs/brand background/tokens.css naming, with a calm
+   teal accent for TaskVault. Dark mode follows prefers-color-scheme (Tailwind 4's
+   default `dark:` variant uses the same media query). */
+:root {
+  color-scheme: light dark;
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --surface-2: #f1f1ee;
+  --fg: #18181b;
+  --fg-muted: #5b5b66;
+  --border: #e4e4e1;
+  --accent: #0f766e;
+  --accent-fg: #ffffff;
+  --accent-soft: #ccfbf1;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1113;
+    --surface: #161a1d;
+    --surface-2: #1e2327;
+    --fg: #ececec;
+    --fg-muted: #a1a1aa;
+    --border: #2a3035;
+    --accent: #2dd4bf;
+    --accent-fg: #042f2e;
+    --accent-soft: rgba(45, 212, 191, 0.14);
+    --danger: #f87171;
+    --danger-soft: rgba(248, 113, 113, 0.14);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251, 191, 36, 0.14);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep the scrollbar gutter stable so opening a modal doesn't shift the page. */
+html {
+  scrollbar-gutter: stable;
+}

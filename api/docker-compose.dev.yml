@@ -1,0 +1,23 @@
+# Local Postgres only (host port 5436, so it doesn't clash with the other org
+# apps' dev databases). Production uses the shared 3pandalabs-postgres instance.
+name: taskvault
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: taskvault
+      POSTGRES_PASSWORD: taskvault
+      POSTGRES_DB: taskvault
+    ports:
+      - "5436:5432"
+    volumes:
+      - taskvault_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taskvault"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  taskvault_pgdata:
