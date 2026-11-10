@@ -72,18 +72,18 @@ export default function ImportPage() {
       </header>
 
       {imported ? (
-        <Panel className="space-y-3 border-accent/40">
+        <Panel className="space-y-3 border-emerald-400/30">
           <p className="flex items-center gap-2 font-semibold text-fg">
-            <CheckCircle2 className="size-5 text-accent" aria-hidden />
+            <CheckCircle2 className="size-5 text-emerald-300" aria-hidden />
             Imported
           </p>
           <Counts r={imported} />
           {imported.errors.length ? <RowErrors r={imported} note="These rows were skipped:" /> : null}
           <div className="flex flex-wrap gap-2 pt-1">
-            <Link href="/" className="inline-flex h-11 items-center rounded-full bg-accent px-4 text-sm font-medium text-accent-fg">
+            <Link href="/" className="inline-flex h-11 items-center rounded-lg bg-amber-400 px-4 text-sm font-medium text-zinc-950 hover:bg-amber-300">
               See Today
             </Link>
-            <Link href="/workstreams" className="inline-flex h-11 items-center rounded-full border border-line bg-surface px-4 text-sm font-medium">
+            <Link href="/workstreams" className="inline-flex h-11 items-center rounded-lg border border-white/15 bg-white/5 px-4 text-sm font-medium text-zinc-100 hover:bg-white/10">
               Workstreams
             </Link>
           </div>
@@ -178,7 +178,7 @@ function Counts({ r, future }: { r: ImportResult; future?: boolean }) {
     <div>
       <div className="grid grid-cols-3 gap-2">
         {items.map((i) => (
-          <div key={i.label} className="rounded-xl bg-surface-2 px-3 py-2 text-center">
+          <div key={i.label} className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-center">
             <div className="text-xl font-semibold tabular-nums">{i.n}</div>
             <div className="text-xs text-fg-muted">{i.label}</div>
           </div>
@@ -195,7 +195,7 @@ function RowErrors({ r, note }: { r: ImportResult; note: string }) {
       <p className="text-sm text-danger">
         {r.errors.length} row{r.errors.length === 1 ? "" : "s"} with problems. {note}
       </p>
-      <ul className="max-h-64 space-y-1 overflow-y-auto rounded-xl bg-danger-soft p-3 text-sm">
+      <ul className="max-h-64 space-y-1 overflow-y-auto rounded-lg border border-red-400/30 bg-red-400/10 p-3 text-sm">
         {r.errors.map((e, i) => (
           <li key={`${e.row}-${i}`}>
             <span className="font-medium">Row {e.row}:</span> {e.message}

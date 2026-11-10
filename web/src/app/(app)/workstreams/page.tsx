@@ -49,7 +49,7 @@ export default function WorkstreamsPage() {
         </Button>
       </header>
 
-      <div role="tablist" aria-label="Filter" className="flex gap-1 overflow-x-auto rounded-full bg-surface-2 p-1">
+      <div role="tablist" aria-label="Filter" className="flex gap-1 overflow-x-auto rounded-lg border border-white/10 bg-white/[0.03] p-1">
         {TABS.map((t) => (
           <button
             key={t.id}
@@ -58,8 +58,8 @@ export default function WorkstreamsPage() {
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
             className={cn(
-              "h-10 flex-1 whitespace-nowrap rounded-full px-3 text-sm font-medium transition-colors",
-              tab === t.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted hover:text-fg",
+              "h-10 flex-1 whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors",
+              tab === t.id ? "bg-white/10 text-zinc-100" : "text-zinc-400 hover:text-zinc-100",
             )}
           >
             {t.label}
@@ -90,7 +90,7 @@ export default function WorkstreamsPage() {
             <p>
               A workstream is one thing you&apos;re tracking, like &ldquo;EB5&rdquo; or &ldquo;Car insurance renewal&rdquo;.
               Create one, or{" "}
-              <Link href="/import" className="font-medium text-accent hover:underline">
+              <Link href="/import" className="font-medium text-amber-300 hover:underline">
                 import your spreadsheet
               </Link>
               .
@@ -117,7 +117,7 @@ function WorkstreamCard({ w }: { w: WorkstreamSummary }) {
   return (
     <Link
       href={`/workstreams/${w.id}`}
-      className="flex h-full flex-col gap-3 rounded-2xl border border-line bg-surface p-4 shadow-sm transition-colors hover:border-accent/50"
+      className="flex h-full flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/[0.05] sm:p-5"
     >
       <div className="flex items-start justify-between gap-2">
         <h2 className="text-base font-semibold leading-snug text-fg">{w.title}</h2>
@@ -141,11 +141,11 @@ function WorkstreamCard({ w }: { w: WorkstreamSummary }) {
       ) : null}
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-1">
         <PriorityBadge priority={w.priority} />
-        <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs text-fg-muted">
+        <span className="rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-xs text-zinc-300">
           {w.openTasks} open
         </span>
         {w.overdueTasks ? (
-          <span className="inline-flex items-center gap-1 rounded-full bg-danger-soft px-2.5 py-1 text-xs font-medium text-danger">
+          <span className="inline-flex items-center gap-1 rounded-full border border-red-400/30 bg-red-400/10 px-2.5 py-0.5 text-xs font-medium text-red-200">
             <AlertTriangle className="size-3" aria-hidden />
             {w.overdueTasks} overdue
           </span>

@@ -76,7 +76,7 @@ function QuickAddForm({ onClose }: { onClose: () => void }) {
     return (
       <div className="space-y-3 text-sm text-fg-muted">
         <p>Tasks live inside a workstream (like &ldquo;Car insurance&rdquo;). Create one first.</p>
-        <Link href="/workstreams?new=1" onClick={onClose} className="font-medium text-accent hover:underline">
+        <Link href="/workstreams?new=1" onClick={onClose} className="font-medium text-amber-300 hover:underline">
           Create a workstream
         </Link>
       </div>

@@ -1,57 +1,57 @@
 @import "tailwindcss";
 
-/* Tokens follow 3pandalabs/brand background/tokens.css naming, with a calm
-   teal accent for TaskVault. Dark mode follows prefers-color-scheme (Tailwind 4's
-   default `dark:` variant uses the same media query). */
-:root {
-  color-scheme: light dark;
-  --bg: #f7f7f5;
-  --surface: #ffffff;
-  --surface-2: #f1f1ee;
-  --fg: #18181b;
-  --fg-muted: #5b5b66;
-  --border: #e4e4e1;
-  --accent: #0f766e;
-  --accent-fg: #ffffff;
-  --accent-soft: #ccfbf1;
-  --danger: #dc2626;
-  --danger-soft: #fee2e2;
-  --warn: #b45309;
-  --warn-soft: #fef3c7;
-}
+/* Same visual system as AdVault (3pandalabs/advault web/): dark-only zinc-950
+   chrome, amber-400 primary, violet + amber blurred backdrop, glass cards
+   (white/[0.03] + white/10 border). Tokens keep TaskVault's semantic names so
+   components read the same; only the values follow AdVault.
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e1113;
-    --surface: #161a1d;
-    --surface-2: #1e2327;
-    --fg: #ececec;
-    --fg-muted: #a1a1aa;
-    --border: #2a3035;
-    --accent: #2dd4bf;
-    --accent-fg: #042f2e;
-    --accent-soft: rgba(45, 212, 191, 0.14);
-    --danger: #f87171;
-    --danger-soft: rgba(248, 113, 113, 0.14);
-    --warn: #fbbf24;
-    --warn-soft: rgba(251, 191, 36, 0.14);
-  }
+   Dark-only on purpose, like AdVault: one chrome for the whole org's tools.
+   Semantics on top of the palette:
+     - accent  = amber-400   (primary buttons, active nav, focus rings)
+     - danger  = red-400     (overdue, destructive) — AdVault's "danger" badge
+     - warn    = amber-300   (due today, "waiting") — AdVault's "pending" badge
+     - success = emerald-400 (active workstream)    — AdVault's "success" badge */
+:root {
+  color-scheme: dark;
+  --bg: #09090b; /* zinc-950 */
+  --surface: rgba(255, 255, 255, 0.03); /* glass card */
+  --surface-2: rgba(255, 255, 255, 0.06); /* chips, hover rows */
+  --surface-solid: #131316; /* modals, sheets, toasts: must be opaque */
+  --fg: #f4f4f5; /* zinc-100 */
+  --fg-muted: #a1a1aa; /* zinc-400 */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --accent: #fbbf24; /* amber-400 */
+  --accent-fg: #09090b;
+  --accent-soft: rgba(251, 191, 36, 0.1);
+  --brand: #f5c242; /* wordmark "Vault" gold, same as AdVault */
+  --danger: #f87171; /* red-400 */
+  --danger-soft: rgba(248, 113, 113, 0.1);
+  --warn: #fcd34d; /* amber-300 */
+  --warn-soft: rgba(251, 191, 36, 0.1);
+  --success: #6ee7b7; /* emerald-300 */
+  --success-soft: rgba(52, 211, 153, 0.1);
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-solid: var(--surface-solid);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
+  --color-brand: var(--brand);
   --color-danger: var(--danger);
   --color-danger-soft: var(--danger-soft);
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
 }
 
 html,
@@ -63,9 +63,17 @@ body {
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Same stack as AdVault's globals.css. */
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Native <select> popups and date pickers follow color-scheme; keep options
+   legible on the dark chrome. */
+option {
+  background: var(--surface-solid);
+  color: var(--fg);
 }
 
 /* Keep the scrollbar gutter stable so opening a modal doesn't shift the page. */

@@ -86,11 +86,11 @@ function TodayBody({
       <EmptyState icon={<PartyPopper className="size-10" />} title="All clear">
         <p>Nothing overdue, nothing due this week, and no next steps waiting. Enjoy it.</p>
         <p className="mt-3">
-          <Link href="/workstreams" className="font-medium text-accent hover:underline">
+          <Link href="/workstreams" className="font-medium text-amber-300 hover:underline">
             Browse workstreams
           </Link>{" "}
           or{" "}
-          <Link href="/import" className="font-medium text-accent hover:underline">
+          <Link href="/import" className="font-medium text-amber-300 hover:underline">
             import your spreadsheet
           </Link>
           .
@@ -169,7 +169,7 @@ function TaskSection({
       <SectionTitle tone={tone} count={open}>
         {title}
       </SectionTitle>
-      <Panel className={tone === "danger" ? "border-danger/40 p-0 sm:p-0" : "p-0 sm:p-0"}>
+      <Panel className={tone === "danger" ? "border-red-400/30 p-0 sm:p-0" : "p-0 sm:p-0"}>
         <ul className="divide-y divide-line py-1">
           {tasks.map((t) => (
             <TaskRow

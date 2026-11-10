@@ -7,8 +7,9 @@ import { dismissToast, useToasts } from "@/lib/toast";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
+/** AdVault's Card (ui/card.tsx there): glass surface, white/10 hairline, no shadow. */
 export function Panel({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("rounded-2xl border border-line bg-surface p-4 shadow-sm sm:p-5", className)} {...props} />;
+  return <div className={cn("rounded-xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm sm:p-5", className)} {...props} />;
 }
 
 export function SectionTitle({
@@ -27,15 +28,15 @@ export function SectionTitle({
       <h2
         className={cn(
           "flex items-center gap-2 text-xs font-semibold uppercase tracking-wider",
-          tone === "danger" ? "text-danger" : "text-fg-muted",
+          tone === "danger" ? "text-red-300" : "text-zinc-400",
         )}
       >
         {children}
         {count !== undefined ? (
           <span
             className={cn(
-              "rounded-full px-2 py-0.5 text-[11px] tabular-nums",
-              tone === "danger" ? "bg-danger-soft text-danger" : "bg-surface-2 text-fg-muted",
+              "rounded-full border px-2 py-0.5 text-[11px] tabular-nums",
+              tone === "danger" ? "border-red-400/30 bg-red-400/10 text-red-200" : "border-white/15 bg-white/5 text-zinc-300",
             )}
           >
             {count}
@@ -52,7 +53,7 @@ export function Loading({ rows = 4, label = "Loading" }: { rows?: number; label?
   return (
     <div role="status" aria-label={label} className="space-y-3">
       {Array.from({ length: rows }, (_, i) => (
-        <div key={i} className="h-16 animate-pulse rounded-2xl border border-line bg-surface" />
+        <div key={i} className="h-16 animate-pulse rounded-xl border border-white/10 bg-white/[0.03]" />
       ))}
       <span className="sr-only">{label}…</span>
     </div>
@@ -66,7 +67,7 @@ export function Spinner({ className }: { className?: string }) {
 export function LoadError({ error, onRetry }: { error: unknown; onRetry?: () => void }) {
   return (
     <Panel className="flex flex-col items-center gap-3 py-10 text-center">
-      <AlertCircle className="size-8 text-danger" aria-hidden />
+      <AlertCircle className="size-8 text-red-300" aria-hidden />
       <p className="text-sm text-fg">{errorMessage(error)}</p>
       {onRetry ? (
         <Button variant="outline" onClick={onRetry}>
@@ -80,7 +81,7 @@ export function LoadError({ error, onRetry }: { error: unknown; onRetry?: () => 
 export function ErrorText({ children }: { children: React.ReactNode }) {
   if (!children) return null;
   return (
-    <p role="alert" className="rounded-xl bg-danger-soft px-3 py-2 text-sm text-danger">
+    <p role="alert" className="rounded-lg border border-red-400/30 bg-red-400/10 px-3 py-2 text-sm text-red-300">
       {children}
     </p>
   );
@@ -99,11 +100,11 @@ export function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={htmlFor} className="block text-sm font-medium text-fg">
+      <label htmlFor={htmlFor} className="block text-sm font-medium text-zinc-300">
         {label}
       </label>
       {children}
-      {hint ? <p className="text-xs text-fg-muted">{hint}</p> : null}
+      {hint ? <p className="text-xs text-zinc-500">{hint}</p> : null}
     </div>
   );
 }
@@ -172,14 +173,14 @@ export function Modal({
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" onClick={onClose} aria-hidden />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} aria-hidden />
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="relative flex max-h-[92dvh] w-full flex-col rounded-t-3xl border border-line bg-surface shadow-2xl outline-none sm:max-w-lg sm:rounded-3xl"
+        className="relative flex max-h-[92dvh] w-full flex-col rounded-t-2xl border border-white/10 bg-surface-solid shadow-2xl shadow-black/50 outline-none sm:max-w-lg sm:rounded-xl"
       >
         <div className="flex items-center justify-between gap-2 border-b border-line px-4 py-2 sm:px-5">
           <h2 id={titleId} className="text-base font-semibold">
@@ -256,8 +257,8 @@ export function Toaster() {
           key={t.id}
           role={t.tone === "error" ? "alert" : "status"}
           className={cn(
-            "pointer-events-auto flex max-w-md items-center gap-3 rounded-2xl px-4 py-3 text-sm shadow-lg",
-            t.tone === "error" ? "bg-danger text-white dark:text-zinc-950" : "bg-fg text-bg",
+            "pointer-events-auto flex max-w-md items-center gap-3 rounded-xl border px-4 py-3 text-sm shadow-lg shadow-black/40 backdrop-blur-md",
+            t.tone === "error" ? "border-red-400/30 bg-red-950/90 text-red-100" : "border-white/15 bg-zinc-900/95 text-zinc-100",
           )}
         >
           <span className="flex-1">{t.text}</span>

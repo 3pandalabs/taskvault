@@ -13,9 +13,9 @@ export const STATUSES: WorkstreamStatus[] = ["active", "waiting", "done"];
 export const STATUS_LABEL: Record<WorkstreamStatus, string> = { active: "Active", waiting: "Waiting", done: "Done" };
 
 const DOT: Record<Priority, string> = {
-  high: "bg-red-500",
+  high: "bg-red-400",
   medium: "bg-amber-400",
-  low: "bg-zinc-400 dark:bg-zinc-500",
+  low: "bg-zinc-500",
 };
 
 export function PriorityDot({ priority, className }: { priority: Priority; className?: string }) {
@@ -31,22 +31,23 @@ export function PriorityDot({ priority, className }: { priority: Priority; class
 
 export function PriorityBadge({ priority }: { priority: Priority }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-fg-muted">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-xs font-medium text-zinc-300">
       <PriorityDot priority={priority} />
       {PRIORITY_LABEL[priority]}
     </span>
   );
 }
 
+// AdVault Badge tones: active = success, waiting = pending, done = neutral.
 const STATUS_STYLE: Record<WorkstreamStatus, string> = {
-  active: "bg-accent-soft text-accent",
-  waiting: "bg-warn-soft text-warn",
-  done: "bg-surface-2 text-fg-muted",
+  active: "border-emerald-400/30 bg-emerald-400/10 text-emerald-200",
+  waiting: "border-amber-400/30 bg-amber-400/10 text-amber-200",
+  done: "border-white/15 bg-white/5 text-zinc-300",
 };
 
 export function StatusBadge({ status }: { status: WorkstreamStatus }) {
   return (
-    <span className={cn("inline-flex rounded-full px-2.5 py-1 text-xs font-medium", STATUS_STYLE[status])}>
+    <span className={cn("inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-xs font-medium", STATUS_STYLE[status])}>
       {STATUS_LABEL[status]}
     </span>
   );
@@ -60,7 +61,7 @@ export function Avatar({ memberId, className }: { memberId: string | null; class
       title={memberName(memberId)}
       className={cn(
         "inline-flex size-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold",
-        memberId === null ? "bg-surface-2 text-fg-muted" : "bg-accent-soft text-accent",
+        memberId === null ? "border border-white/15 bg-white/5 text-zinc-300" : "border border-violet-400/30 bg-violet-500/15 text-violet-200",
         className,
       )}
     >
@@ -71,10 +72,10 @@ export function Avatar({ memberId, className }: { memberId: string | null; class
 }
 
 const DUE_TONE = {
-  overdue: "text-danger font-medium",
-  today: "text-warn font-medium",
-  soon: "text-fg",
-  later: "text-fg-muted",
+  overdue: "text-red-300 font-medium",
+  today: "text-amber-300 font-medium",
+  soon: "text-zinc-200",
+  later: "text-zinc-400",
 } as const;
 
 export function DueLabel({ due, today, className }: { due: ISODate; today: ISODate; className?: string }) {
@@ -168,15 +169,15 @@ export function LinkIcon({ kind, className }: { kind: LinkKind; className?: stri
   const cls = cn("size-5 shrink-0", className);
   switch (kind) {
     case "drive":
-      return <FolderOpen className={cn(cls, "text-amber-500")} aria-label={LINK_LABEL[kind]} />;
+      return <FolderOpen className={cn(cls, "text-amber-400")} aria-label={LINK_LABEL[kind]} />;
     case "docs":
-      return <FileText className={cn(cls, "text-blue-500")} aria-label={LINK_LABEL[kind]} />;
+      return <FileText className={cn(cls, "text-sky-400")} aria-label={LINK_LABEL[kind]} />;
     case "sheets":
-      return <FileSpreadsheet className={cn(cls, "text-green-600")} aria-label={LINK_LABEL[kind]} />;
+      return <FileSpreadsheet className={cn(cls, "text-emerald-400")} aria-label={LINK_LABEL[kind]} />;
     case "slides":
-      return <Presentation className={cn(cls, "text-orange-500")} aria-label={LINK_LABEL[kind]} />;
+      return <Presentation className={cn(cls, "text-orange-400")} aria-label={LINK_LABEL[kind]} />;
     case "gmail":
-      return <Mail className={cn(cls, "text-red-500")} aria-label={LINK_LABEL[kind]} />;
+      return <Mail className={cn(cls, "text-red-400")} aria-label={LINK_LABEL[kind]} />;
     default:
       return <Globe className={cn(cls, "text-fg-muted")} aria-label={LINK_LABEL[kind]} />;
   }

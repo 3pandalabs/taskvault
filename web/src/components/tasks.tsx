@@ -59,7 +59,7 @@ export function TaskCheckbox({ done, onToggle, title }: { done: boolean; onToggl
       <span
         className={cn(
           "flex size-6 items-center justify-center rounded-full border-2 transition-colors",
-          done ? "border-accent bg-accent text-accent-fg" : "border-fg-muted/50 group-hover:border-accent",
+          done ? "border-amber-400 bg-amber-400 text-zinc-950" : "border-zinc-500 group-hover:border-amber-400",
         )}
       >
         {done ? <Check className="size-4" strokeWidth={3} /> : null}
@@ -93,7 +93,7 @@ export function TaskRow({
         {showWorkstream ? (
           <Link
             href={`/workstreams/${task.workstreamId}`}
-            className="inline-flex min-h-7 max-w-[12rem] items-center truncate rounded-full bg-surface-2 px-2.5 text-xs text-fg-muted hover:text-fg"
+            className="inline-flex min-h-7 max-w-[12rem] items-center truncate rounded-full border border-white/10 bg-white/5 px-2.5 text-xs text-zinc-400 hover:text-zinc-100"
             title={`Open ${task.workstreamTitle}`}
           >
             <span className="truncate">{task.workstreamTitle}</span>
@@ -217,7 +217,7 @@ function TaskForm({
   return (
     <form onSubmit={submit} className="space-y-4">
       {showWorkstreamLink ? (
-        <Link href={`/workstreams/${task.workstreamId}`} className="inline-flex items-center gap-1 text-sm text-accent hover:underline">
+        <Link href={`/workstreams/${task.workstreamId}`} className="inline-flex items-center gap-1 text-sm text-amber-300 hover:underline">
           {task.workstreamTitle}
           <ExternalLink className="size-3.5" aria-hidden />
         </Link>
@@ -258,7 +258,7 @@ function TaskForm({
                     href={l.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex min-h-11 items-center gap-2 rounded-xl px-2 text-sm hover:bg-surface-2"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-2 text-sm hover:bg-white/10"
                   >
                     <LinkIcon kind={info.kind} />
                     <span className="truncate">{l.title || info.host}</span>
@@ -272,7 +272,7 @@ function TaskForm({
       <ErrorText>{save.error || del.error}</ErrorText>
 
       {confirmDelete ? (
-        <div className="space-y-3 rounded-2xl border border-danger/40 bg-danger-soft p-3">
+        <div className="space-y-3 rounded-xl border border-red-400/30 bg-red-400/10 p-3">
           <p className="text-sm text-fg">Delete this task? This can&apos;t be undone.</p>
           <div className="flex justify-end gap-2">
             <Button variant="outline" onClick={() => setConfirmDelete(false)} disabled={del.busy}>
