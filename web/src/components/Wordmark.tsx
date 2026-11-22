@@ -23,15 +23,15 @@ export function WordmarkName() {
 
 /** "| by 3PandaLabs" attribution tag (brand/attribution). A sibling of the home
  * link, never nested inside it. */
-export function WordmarkTag({ className }: { className?: string }) {
+export function WordmarkTag() {
   return (
-    <span className={className}>
+    <span className="shrink-0">
       <span aria-hidden className="mx-2 inline-block h-3.5 w-px translate-y-[1px] bg-current align-middle opacity-20" />
       <a
         href="https://3pandalabs.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="align-middle font-mono text-[10px] font-normal tracking-widest text-zinc-500 hover:text-zinc-300 hover:underline"
+        className="align-middle font-mono text-[10px] font-normal uppercase tracking-widest text-zinc-500 hover:text-zinc-300 hover:underline"
       >
         by 3PandaLabs
       </a>
@@ -39,8 +39,9 @@ export function WordmarkTag({ className }: { className?: string }) {
   );
 }
 
-/** Header logo: mark + name linking home, attribution as a sibling. */
-export function Logo({ href = "/", tagClassName }: { href?: string; tagClassName?: string }) {
+/** Header logo: mark + name linking home, attribution as a sibling. The tag is
+ * never hidden at any width (org brand rule, 2026-11-22). */
+export function Logo({ href = "/" }: { href?: string }) {
   return (
     <span className="inline-flex items-center text-lg font-semibold tracking-tight">
       <Link href={href} className="inline-flex min-h-11 items-center gap-2 text-zinc-100">
@@ -49,7 +50,7 @@ export function Logo({ href = "/", tagClassName }: { href?: string; tagClassName
           <WordmarkName />
         </span>
       </Link>
-      <WordmarkTag className={tagClassName} />
+      <WordmarkTag />
     </span>
   );
 }
