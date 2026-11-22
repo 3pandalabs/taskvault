@@ -74,7 +74,7 @@ function Chrome({ children }: { children: React.ReactNode }) {
       {/* Top bar: full nav on desktop, just the logo on phones. */}
       <header className="sticky top-0 z-30 border-b border-white/10 bg-zinc-950/70 pt-[env(safe-area-inset-top)] backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
-          <Logo tagClassName="hidden sm:inline" />
+          <Logo />
           <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
             {[...TABS.slice(0, 2), { href: "/import", label: "Import", icon: Upload, match: (p: string) => p === "/import" }, TABS[2]].map(
               (t) => (
