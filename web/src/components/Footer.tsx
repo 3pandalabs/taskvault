@@ -1,3 +1,5 @@
+import { FollowUs } from "@/components/FollowUs";
+
 // Canonical org footer, copied from 3pandalabs/brand `footer/` — the same
 // two-span row AdVault, RentVault, RsvpVault and MealMargin render. Do not
 // reword. Private app: no legal-links row (AdVault's is an AdVault-only
@@ -7,6 +9,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 px-6 py-8">
       <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-2 text-sm text-zinc-500">
+        <FollowUs />
         <span>&copy; 3PandaLabs LLC, USA.</span>
         <span>All rights reserved.</span>
         <p className="mt-1 basis-full text-xs text-zinc-500">Built by pandas. Loved by people.</p>
