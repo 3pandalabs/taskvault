@@ -10,7 +10,8 @@ import { errorMessage, login } from "@/lib/api";
 import { useAction, useNextPath } from "@/lib/hooks";
 import { useSignedIn } from "@/lib/session";
 
-export default function LoginPage() {
+/** The sign-in form, rendered inside the public home page at /login. */
+export function LoginForm() {
   const router = useRouter();
   const next = useNextPath();
   const signedIn = useSignedIn();
@@ -31,7 +32,7 @@ export default function LoginPage() {
   return (
     <form onSubmit={submit} className="space-y-4">
       <div>
-        <h1 className="text-xl font-semibold">Sign in</h1>
+        <h2 className="text-xl font-semibold">Sign in</h2>
         <p className="mt-1 text-sm text-fg-muted">Your household&apos;s life admin, in one place.</p>
       </div>
       <Field label="Email" htmlFor="email">
